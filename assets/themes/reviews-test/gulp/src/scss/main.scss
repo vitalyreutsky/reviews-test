@@ -1,0 +1,18 @@
+@import "vars";
+@import "mixins";
+@import "fonts";
+@import "settings";
+
+@import "components/header";
+@import "components/loading";
+@import "components/form";
+
+@import "blocks/content-block";
+@import "blocks/reviews";
+@import "blocks/posts-list";
+
+@import "cards/review-card";
+@import "cards/post-card";
+
+@import "global/btns";
+@import "global/text";

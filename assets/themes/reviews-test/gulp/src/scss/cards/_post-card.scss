@@ -1,0 +1,24 @@
+.post-card {
+  border: 1px solid $red;
+  overflow: hidden;
+
+  &__wrapper {
+    @include flex-all-center;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 10px;
+  }
+
+  &__content {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+  }
+
+  &__link {
+    font-size: 20px;
+  }
+}

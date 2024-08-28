@@ -1,0 +1,16 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  transition: all 0.2s ease-in-out;
+  z-index: 1000;
+
+  &__container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}

@@ -1,0 +1,49 @@
+.reviews {
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    width: 100%;
+
+    @include small-tablet {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    margin-top: 50px;
+  }
+
+  &__filter {
+    @include flex-all-center;
+    gap: 10px;
+
+    .sort-btn {
+      padding: 10px;
+      font-size: 25px;
+      line-height: normal;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease-in-out;
+
+      &.active {
+        background-color: $red;
+        pointer-events: none;
+      }
+
+      @include for-desktop {
+        &:hover:not(.active) {
+          background-color: rgb(244 5 5 / 42%);
+        }
+      }
+
+      @include small-tablet {
+        font-size: 16px;
+      }
+    }
+  }
+}
