@@ -1,1 +1,1 @@
-# My wordpress theme
+# Reviews test
