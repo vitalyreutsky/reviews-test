@@ -7,9 +7,15 @@ $args = [
    "posts_per_page" => -1,
    'orderby'          => 'date',
    'meta_query' => [
+      'relation' => 'AND',
       [
          'key' => 'review_post_id',
          'value' => $post_id,
+      ],
+      [
+         'key'     => 'review_status',
+         'value'   => '1',
+         'compare' => '='
       ]
    ]
 ];
