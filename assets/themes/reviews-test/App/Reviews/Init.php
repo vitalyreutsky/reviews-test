@@ -17,18 +17,19 @@ class Init
    {
       $data = json_decode(stripslashes($_POST['data']));
 
-      if (
-         !isset($data->name, $data->message, $data->review_post_id) ||
-         empty($data->name) ||
-         empty($data->message)
-      ) {
-         wp_send_json_error('Недостаточно данных или пустые поля', 400);
+      if (!isset($data->name, $data->message, $data->review_post_id)) {
+         wp_send_json_error('Ошибка при отправке отзыва. Пожалуйста, попробуйте еще раз.', 400);
          return;
       }
 
       $data_name = sanitize_text_field($data->name);
       $data_message = sanitize_textarea_field($data->message);
       $review_post_id = intval($data->review_post_id);
+
+      if (empty($data_name) || empty($data_message) || preg_match('/[\';"\/\*\-\(\)<>]/', $data_name) || preg_match('/[\';"\/\*\-\(\)<>]/', $data_message)) {
+         wp_send_json_error('Ошибка при отправке отзыва. Пожалуйста, попробуйте еще раз.', 400);
+         return;
+      }
 
       $post_data = array(
          "post_author"   => 1,
@@ -41,7 +42,7 @@ class Init
       $post_id = wp_insert_post($post_data);
 
       if (is_wp_error($post_id)) {
-         wp_send_json_error('Ошибка при добавлении отзыва', 500);
+         wp_send_json_error('Ошибка при отправке отзыва. Пожалуйста, попробуйте еще раз.', 500);
          return;
       }
 
@@ -55,11 +56,12 @@ class Init
          'result' => $result,
          'data_name' => $data_name,
          'post_id' => $post_id,
-         'moderation_text' => esc_html($data_name) . ' Ваш отзыв на модерации',
+         'moderation_text' => $data_name . ' Ваш отзыв на модерации',
       ];
 
       wp_send_json($return);
    }
+
 
    public static function sort_reviews()
    {

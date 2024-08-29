@@ -5,7 +5,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
   if (reviewsBlock) {
     const form = reviewsBlock.querySelector(".form");
-    const reviewsItems = reviewsBlock.querySelector(".reviews__items");
     const reviewsCards = reviewsBlock.querySelector(".reviews__cards");
     const filter = reviewsBlock.querySelector(".reviews__filter");
     const formResult = reviewsBlock.querySelector(".form__result");
@@ -29,24 +28,17 @@ window.addEventListener("DOMContentLoaded", function () {
 
         let res = await response.json();
 
-        if (res) {
-          hideLoading(form);
-          formResult.classList.remove("is-hidden");
-          formResultText.textContent = res.data_name;
+        hideLoading(form);
+        formResult.classList.remove("is-hidden");
+        formResultText.textContent = res.moderation_text;
 
-          reviewsCards.innerHTML = res.result + reviewsCards.innerHTML;
-
-          if (reviewsCards.children.length > 1) {
-            filter.classList.remove("is-hidden");
-          }
-
-          reviewsItems.classList.remove("is-hidden");
-
-          formResultText.textContent = res.moderation_text;
-          setTimeout(() => {
-            formResult.classList.add("is-hidden");
-          }, 2000);
+        if (reviewsCards.children.length > 1) {
+          filter.classList.remove("is-hidden");
         }
+
+        setTimeout(() => {
+          formResult.classList.add("is-hidden");
+        }, 2000);
       } catch (error) {
         console.error("Error:", error);
         hideLoading(form);
@@ -72,19 +64,13 @@ window.addEventListener("DOMContentLoaded", function () {
 
       fields.forEach((el) => {
         const value = el.value.trim();
-        if (!value) {
+
+        if (value === "") {
           el.classList.add("error");
           isValid = false;
         } else {
-          const scriptTag =
-            /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i;
-          if (scriptTag.test(value)) {
-            el.classList.add("error");
-            isValid = false;
-          } else {
-            el.classList.remove("error");
-            data[el.name] = value;
-          }
+          el.classList.remove("error");
+          data[el.name] = value;
         }
       });
 
