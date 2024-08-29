@@ -26,7 +26,7 @@ class RegisterCustomPostType
                 'parent_item_colon' => '',
                 'menu_name' => 'Reviews'
             ),
-            'public' => false,
+            'public' => true,
             'publicly_queryable' => false,
             'show_ui' => true,
             'show_in_menu' => true,
