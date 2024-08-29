@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", function () {
         hideLoading(form);
         formResult.classList.remove("is-hidden");
         formResultText.textContent =
-          "Ошибка при отправке отзыва. Пожалуйста, попробуйте еще раз.";
+          "There was an error when submitting your feedback. Please try again.";
         setTimeout(() => {
           formResult.classList.add("is-hidden");
         }, 2000);

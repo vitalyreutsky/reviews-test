@@ -25,7 +25,7 @@ $reviews = get_posts($args);
 
 <section class="reviews">
    <div class="container reviews__container">
-      <h1 class="reviews__title main-title"><?php echo esc_html('Оставь свой отзыв'); ?></h1>
+      <h1 class="reviews__title main-title"><?php echo esc_html('Leave a review'); ?></h1>
 
       <div class="reviews__form">
          <form class="form">
@@ -33,11 +33,11 @@ $reviews = get_posts($args);
 
             <div class="form__fields">
                <div class="form__field form__field--name">
-                  <input type="text" name="name" placeholder="Ваше имя" class="field form__field-input input-name input-reset">
+                  <input type="text" name="name" placeholder="Name" class="field form__field-input input-name input-reset">
                </div>
 
                <div class="form__field form__field--message">
-                  <textarea name="message" placeholder="Ваше сообщение" class="field form__field-input input-reset"></textarea>
+                  <textarea name="message" placeholder="Message" class="field form__field-input input-reset"></textarea>
                </div>
             </div>
 

@@ -18,7 +18,7 @@ class Init
       $data = json_decode(stripslashes($_POST['data']));
 
       if (!isset($data->name, $data->message, $data->review_post_id)) {
-         wp_send_json_error('Ошибка при отправке отзыва. Пожалуйста, попробуйте еще раз.', 400);
+         wp_send_json_error('There was an error when submitting your feedback. Please try again.', 400);
          return;
       }
 
@@ -27,7 +27,7 @@ class Init
       $review_post_id = intval($data->review_post_id);
 
       if (empty($data_name) || empty($data_message) || preg_match('/[\';"\/\*\-\(\)<>]/', $data_name) || preg_match('/[\';"\/\*\-\(\)<>]/', $data_message)) {
-         wp_send_json_error('Ошибка при отправке отзыва. Пожалуйста, попробуйте еще раз.', 400);
+         wp_send_json_error('There was an error when submitting your feedback. Please try again.', 400);
          return;
       }
 
@@ -42,7 +42,7 @@ class Init
       $post_id = wp_insert_post($post_data);
 
       if (is_wp_error($post_id)) {
-         wp_send_json_error('Ошибка при отправке отзыва. Пожалуйста, попробуйте еще раз.', 500);
+         wp_send_json_error('There was an error when submitting your feedback. Please try again.', 500);
          return;
       }
 
@@ -56,7 +56,7 @@ class Init
          'result' => $result,
          'data_name' => $data_name,
          'post_id' => $post_id,
-         'moderation_text' => $data_name . ', ' . ' Ваш отзыв на модерации',
+         'moderation_text' => $data_name . ', ' . ' Your review is being moderated',
       ];
 
       wp_send_json($return);
