@@ -55,6 +55,12 @@ body {
 main {
   padding-top: 100px;
   flex: 1 1 auto;
+
+  > .container {
+    .container {
+      padding: 0;
+    }
+  }
 }
 
 img {
