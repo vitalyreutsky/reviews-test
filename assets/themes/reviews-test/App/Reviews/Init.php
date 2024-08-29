@@ -56,7 +56,7 @@ class Init
          'result' => $result,
          'data_name' => $data_name,
          'post_id' => $post_id,
-         'moderation_text' => $data_name . ' Ваш отзыв на модерации',
+         'moderation_text' => $data_name . ', ' . ' Ваш отзыв на модерации',
       ];
 
       wp_send_json($return);

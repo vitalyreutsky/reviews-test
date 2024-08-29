@@ -53,8 +53,8 @@ $reviews = get_posts($args);
 
       <div class="reviews__items <?php echo empty($reviews) ? esc_attr('is-hidden') : null; ?>">
          <div class="reviews__filter <?php echo count($reviews) <= 1 ? esc_attr('is-hidden') : null; ?>">
-            <button class="reviews__btn sort-btn sort-btn--old btn-reset" value="old"><?php echo esc_html('Old Reviews'); ?></button>
             <button class="reviews__btn sort-btn sort-btn--new btn-reset" value="new"><?php echo esc_html('New Reviews'); ?></button>
+            <button class="reviews__btn sort-btn sort-btn--old btn-reset" value="old"><?php echo esc_html('Old Reviews'); ?></button>
          </div>
 
          <div class="reviews__cards">
